@@ -1,11 +1,18 @@
 <script>
 import { ref } from 'vue';
 import TodoCard from './TodoCard.vue';
+import ModalCard from './ModalCard.vue';
+
 const todos = ref([]);
+const isModalOpen = ref(true);
+
+
 
 export default {
     components: {
-        TodoCard
+        TodoCard,
+        ModalCard
+
     },
     props: {
         sectionTitle: String
@@ -17,16 +24,20 @@ export default {
 
 <template>
 
-    <main>
-        <div id="container">
-            <h2>{{ sectionTitle }}</h2>
-            <div id="cards">
-                <TodoCard />
-            </div>
-            <button>Add card</button>
-
+    <ModalCard :isOpen='isModalOpen'>
+        <template #heading>
+            <h1>This is heading</h1>
+        </template>
+        <template #task>Taskkkk</template>
+    </ModalCard>
+    <div id="container">
+        <h2>{{ sectionTitle }}</h2>
+        <div id="cards">
+            <TodoCard />
         </div>
-    </main>
+        <button @click="">Add card</button>
+
+    </div>
 
 </template>
 
