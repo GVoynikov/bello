@@ -1,20 +1,18 @@
-<script>
-export default {
-    props: {
-        isOpen: {
-            type: Boolean,
-            default: false
-        }
-
+<script setup>
+const props = defineProps({
+    isOpen: {
+        type: Boolean,
+        default: false
     }
-}
+
+})
 
 
 
 </script>
 
 <template>
-    <div v-if='isOpen' class="modal-background">
+    <div v-if='isOpen' class="modal-background" @click="$emit('close')">
         <div id="modal">
             <div id="heading">
                 <slot name="heading"></slot>
@@ -39,5 +37,6 @@ export default {
 
 #modal {
     background-color: white;
+    z-index: 101;
 }
 </style>

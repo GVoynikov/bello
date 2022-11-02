@@ -1,10 +1,7 @@
-<script>
-export default {
-    name: 'HeaderTop',
-    props: {
-        isBordered: Boolean
-    }
-}
+<script setup>
+const props = defineProps({
+    isBordered: Boolean
+})
 
 </script>
 

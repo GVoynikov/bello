@@ -1,30 +1,30 @@
-<script>
+<script setup>
 import { ref } from 'vue';
 import TodoCard from './TodoCard.vue';
 import ModalCard from './ModalCard.vue';
 
 const todos = ref([]);
-const isModalOpen = ref(true);
+const isModalOpen = ref(false);
 
 
 
-export default {
-    components: {
-        TodoCard,
-        ModalCard
+const props = defineProps({
 
-    },
-    props: {
-        sectionTitle: String
-    }
+    sectionTitle: String
+});
+
+const showModal = () => {
+    isModalOpen.value = true;
 }
-
+const closeModal = () => {
+    isModalOpen.value = false;
+}
 
 </script>
 
 <template>
 
-    <ModalCard :isOpen='isModalOpen'>
+    <ModalCard :isOpen='isModalOpen' @close="closeModal">
         <template #heading>
             <h1>This is heading</h1>
         </template>
@@ -35,7 +35,7 @@ export default {
         <div id="cards">
             <TodoCard />
         </div>
-        <button @click="">Add card</button>
+        <button @click="showModal">Add card</button>
 
     </div>
 
