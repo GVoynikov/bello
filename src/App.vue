@@ -5,9 +5,19 @@ import TodoSection from './components/TodoSection.vue';
 </script>
 
 <template>
-  <HeaderTop/>
-  <TodoSection/>
-
+  <HeaderTop />
+  <div id="sections">
+    <TodoSection sectionTitle='Todo' />
+    <TodoSection sectionTitle='In-Progress' />
+    <TodoSection sectionTitle='Done' />
+  </div>
   <RouterView />
 </template>
+
+<style>
+#sections {
+  margin-top: 2rem;
+  display: flex;
+}
+</style>
 
