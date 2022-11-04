@@ -3,9 +3,29 @@ import { ref } from 'vue';
 import TodoCard from './TodoCard.vue';
 import ModalCard from './ModalCard.vue';
 
-const todos = ref([]);
+const getId = () => {
+    return Math.floor(Math.random()*100000);
+}
+
+const todos = ref([{
+    id: getId(),
+    heading: 'Blabla',
+    todo: 'scooby'
+}, {
+    id: getId(),
+    heading: 'Mamamia',
+    todo: 'shabshaba'
+}]);
 const isModalOpen = ref(false);
 
+
+const addTodo = (heading, todo) => {
+    todos.push({
+        id: Math.floor(Math.random()*100000),
+        heading: this.heading,
+        todo: this.todo
+    })
+}
 
 
 const props = defineProps({
@@ -33,7 +53,11 @@ const closeModal = () => {
     <div id="container">
         <h2>{{ sectionTitle }}</h2>
         <div id="cards">
-            <TodoCard />
+            <TodoCard v-for='todo in todos' 
+            :heading='todo.heading'
+            :todo='todo.todo'
+            :id="todo.id"
+            :key='todo.id'/>
         </div>
         <button @click="showModal">Add card</button>
 
