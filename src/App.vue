@@ -13,8 +13,8 @@ let hasBorder = ref(true)
   <HeaderTop :isBordered="hasBorder" />
   <div id="sections">
     <TodoSection sectionTitle='Todo' />
-    <!-- <TodoSection sectionTitle='In-Progress' />
-    <TodoSection sectionTitle='Done' /> -->
+    <TodoSection sectionTitle='In-Progress' />
+    <TodoSection sectionTitle='Done' />
   </div>
   <RouterView />
 </template>

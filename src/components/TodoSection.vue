@@ -8,24 +8,26 @@ const getId = () => {
 }
 
 const todos = ref([{
-    id: getId(),
-    heading: 'Blabla',
-    todo: 'scooby'
+    'id': getId(),
+    'heading': 'Blabla',
+    'todo': 'scooby'
 }, {
-    id: getId(),
-    heading: 'Mamamia',
-    todo: 'shabshaba'
+    'id': getId(),
+    'heading': 'Mamamia',
+    'todo': 'shabshaba'
 }]);
 const isModalOpen = ref(false);
 
 
-const addTodo = (heading, todo) => {
-    todos.push({
+const addTodo = (tempHeading, tempTodo) => {
+    todos.value.push({
         id: Math.floor(Math.random()*100000),
-        heading: this.heading,
-        todo: this.todo
+        heading: tempHeading,
+        todo: tempTodo
     })
-}
+closeModal();
+    }
+
 
 
 const props = defineProps({
@@ -44,7 +46,7 @@ const closeModal = () => {
 
 <template>
 
-    <ModalCard :isOpen='isModalOpen' @close="closeModal">
+    <ModalCard :isOpen='isModalOpen' @close="closeModal" @add="addTodo">
         <template #heading>
             <h1>This is heading</h1>
         </template>

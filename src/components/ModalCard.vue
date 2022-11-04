@@ -1,4 +1,6 @@
 <script setup>
+import { VueElement } from 'vue';
+import {ref} from 'vue';
 const props = defineProps({
     isOpen: {
         type: Boolean,
@@ -6,20 +8,30 @@ const props = defineProps({
     }
 
 })
+let tempHeading=ref('');
+let tempTodo=ref('');
 
-
+const resetTemp = () => {
+    tempHeading.value=null;
+    tempTodo.value=null;
+}
 
 </script>
 
 <template>
-    <div v-if='isOpen' class="modal-background" @click="$emit('close')">
+    <div v-if='isOpen' class="modal-background" >
         <div id="modal">
             <div id="heading">
-                <slot name="heading"></slot>
+                <input type='text' placeholder='add heading' v-model="tempHeading" />
             </div>
             <div id="task">
-                <slot name='task'></slot>
+                <input type='textarea' placeholder='add todo' v-model="tempTodo"/>
             </div>
+            <button @click="$emit('close')">Close</button>
+            <button type="submit" @click="$emit('add', tempHeading, tempTodo); resetTemp()">Submit</button>
+            <p>{{tempHeading}}</p>
+            <p>{{tempTodo}}</p>
+            
         </div>
     </div>
 </template>
