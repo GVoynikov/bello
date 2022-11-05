@@ -23,6 +23,7 @@ const resetTemp = () => {
             <div id="inputs">
 
 
+
                 <div id="heading">
                     <input class="form-control-plaintext heading" type='text' maxlength="333"
                         placeholder='Click to add title' v-model="tempHeading" />
@@ -36,6 +37,7 @@ const resetTemp = () => {
                 <button class="btn btn-primary mb-2" type="submit"
                     @click="$emit('add', tempHeading, tempTodo); resetTemp()">Submit</button>
             </div>
+
 
         </div>
     </div>

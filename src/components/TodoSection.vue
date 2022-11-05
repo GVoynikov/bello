@@ -12,12 +12,16 @@ const isModalOpen = ref(false);
 
 
 const addTodo = (tempHeading, tempTodo) => {
-    todos.value.push({
-        id: Math.floor(Math.random() * 10000000000),
-        heading: tempHeading,
-        todo: tempTodo
-    })
-    closeModal();
+    if (tempHeading.length != 0 && tempHeading.trim().length != 0) {
+        todos.value.push({
+            id: Math.floor(Math.random() * 10000000000),
+            heading: tempHeading,
+            todo: tempTodo
+        })
+        closeModal();
+    } else {
+        alert('Please add heading');
+    }
 }
 
 

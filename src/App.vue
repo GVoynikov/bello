@@ -11,8 +11,6 @@ const sections = ref([{
   name: 'In-Progress'
 }, {
   name: 'Done'
-}, {
-  name: 'nsdas'
 }
 ])
 
@@ -25,10 +23,16 @@ const closeAddListCard = () => {
 }
 
 const addCard = (tempHeading) => {
-  sections.value.push({
-    name: tempHeading,
-  })
-  closeAddListCard();
+  if (tempHeading.length != 0 && tempHeading.trim().length != 0) {
+
+
+    sections.value.push({
+      name: tempHeading,
+    })
+    closeAddListCard();
+  } else {
+    alert('Please add title');
+  }
 }
 </script>
 
