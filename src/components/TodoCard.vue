@@ -23,6 +23,9 @@ const props = defineProps({
 },)
 
 const isInfoOpen = ref(false);
+const closeInfoBox = () => {
+    isInfoOpen.value = false;
+}
 
 const dragStart = (e) => {
     const target = e.target;
@@ -36,7 +39,7 @@ const dragStart = (e) => {
 </script>
 
 <template>
-    <InfoBox :isOpen="isInfoOpen" :heading="heading" :todo="todo" />
+    <InfoBox @close="closeInfoBox" :isOpen="isInfoOpen" :heading="heading" :todo="todo" />
     <div @click="isInfoOpen = true" class="card" :id='id' :draggable="draggable" @dragstart='dragStart' @dragover.stop>
         <h2>{{ heading }}</h2>
     </div>

@@ -94,6 +94,7 @@ main {
     flex-direction: column;
     justify-content: space-between;
     margin-left: 2rem;
+    margin-top: 2rem;
     min-width: 25rem;
     min-height: 40rem;
     background-color: lightgray;

@@ -1,6 +1,6 @@
 <template>
     <div @click="$emit('close')" v-if="isOpen" class="info-background">
-        <div class="modal">
+        <div id="modal">
             <h1>{{ heading }}</h1>
             <p> {{ todo }} </p>
         </div>
@@ -36,7 +36,7 @@ const props = defineProps({
     align-items: center;
 }
 
-.modal {
+#modal {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;

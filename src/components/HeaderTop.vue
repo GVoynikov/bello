@@ -21,10 +21,6 @@ nav {
     background-color: #1877F2;
 }
 
-.bordered {
-    border: 4px solid black;
-}
-
 h1 {
     margin-left: 2rem;
     color: white;
