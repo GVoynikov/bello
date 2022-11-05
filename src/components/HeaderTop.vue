@@ -6,24 +6,28 @@ const props = defineProps({
 </script>
 
 <template>
-    <ul v-bind:class='{ bordered: isBordered }'>
-        <li>Home</li>
-        <li>About</li>
-    </ul>
+    <nav>
+        <h1>Bello</h1>
+    </nav>
 
 </template>
 
 <style scoped>
-ul {
+nav {
     padding: 0;
     margin: 0;
     top: 0;
     height: 80px;
     width: 100%;
-    background-color: blue;
+    background-color: #1877F2;
 }
 
 .bordered {
     border: 4px solid black;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-style: Pacifico;
 }
 </style>

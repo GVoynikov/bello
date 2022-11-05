@@ -4,29 +4,21 @@ import TodoCard from './TodoCard.vue';
 import ModalCard from './ModalCard.vue';
 
 const getId = () => {
-    return Math.floor(Math.random()*100000);
+    return Math.floor(Math.random() * 100000);
 }
 
-const todos = ref([{
-    'id': getId(),
-    'heading': 'Blabla',
-    'todo': 'scooby'
-}, {
-    'id': getId(),
-    'heading': 'Mamamia',
-    'todo': 'shabshaba'
-}]);
+const todos = ref([]);
 const isModalOpen = ref(false);
 
 
 const addTodo = (tempHeading, tempTodo) => {
     todos.value.push({
-        id: Math.floor(Math.random()*100000),
+        id: Math.floor(Math.random() * 10000000000),
         heading: tempHeading,
         todo: tempTodo
     })
-closeModal();
-    }
+    closeModal();
+}
 
 
 
@@ -55,11 +47,7 @@ const closeModal = () => {
     <div id="container">
         <h2>{{ sectionTitle }}</h2>
         <div id="cards">
-            <TodoCard v-for='todo in todos' 
-            :heading='todo.heading'
-            :todo='todo.todo'
-            :id="todo.id"
-            :key='todo.id'/>
+            <TodoCard v-for='todo in todos' :heading='todo.heading' :todo='todo.todo' :id="todo.id" :key='todo.id' />
         </div>
         <button @click="showModal">Add card</button>
 
@@ -71,7 +59,7 @@ const closeModal = () => {
 main {
     width: 100%;
     display: flex;
-    justify-content: around;
+    justify-content: space-around;
     gap: 2rem;
 }
 

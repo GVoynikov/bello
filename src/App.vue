@@ -20,6 +20,12 @@ let hasBorder = ref(true)
 </template>
 
 <style>
+@font-face {
+  font-family: "Pacifico";
+  src: local("Pacifico"),
+    url(./fonts/Pacifico-Regular.ttf) format("truetype");
+}
+
 #sections {
   margin-top: 2rem;
   display: flex;
