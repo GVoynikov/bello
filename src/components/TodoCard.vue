@@ -1,5 +1,8 @@
 <script setup>
 
+import InfoBox from './InfoBox.vue';
+import { ref } from 'vue';
+
 const props = defineProps({
     heading: {
         type: String,
@@ -19,6 +22,8 @@ const props = defineProps({
     draggable: null
 },)
 
+const isInfoOpen = ref(false);
+
 const dragStart = (e) => {
     const target = e.target;
     e.dataTransfer.setData('card_id', target.id);
@@ -31,7 +36,8 @@ const dragStart = (e) => {
 </script>
 
 <template>
-    <div class="card" :id='id' :draggable="draggable" @dragstart='dragStart' @dragover.stop>
+    <InfoBox :isOpen="isInfoOpen" :heading="heading" :todo="todo" />
+    <div @click="isInfoOpen = true" class="card" :id='id' :draggable="draggable" @dragstart='dragStart' @dragover.stop>
         <h2>{{ heading }}</h2>
     </div>
 </template>
@@ -43,8 +49,12 @@ const dragStart = (e) => {
     margin-top: 0.5rem;
     box-shadow: 2px 2px 8px;
     display: flex;
-    align-items: center;
+    max-width: 368px;
     padding-left: 1rem;
+}
+
+.card:hover {
+    opacity: 0.8;
 }
 
 

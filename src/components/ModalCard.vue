@@ -1,5 +1,4 @@
 <script setup>
-import { VueElement } from 'vue';
 import { ref } from 'vue';
 const props = defineProps({
     isOpen: {
@@ -21,14 +20,22 @@ const resetTemp = () => {
 <template>
     <div v-if='isOpen' class="modal-background">
         <div id="modal">
-            <div id="heading">
-                <input type='text' maxlength="28" placeholder='add heading' v-model="tempHeading" />
+            <div id="inputs">
+
+
+                <div id="heading">
+                    <input class="form-control-plaintext heading" type='text' maxlength="333"
+                        placeholder='Click to add title' v-model="tempHeading" />
+                </div>
+                <div id="task">
+                    <textarea placeholder='Add description' v-model="tempTodo"></textarea>
+                </div>
             </div>
-            <div id="task">
-                <input type='textarea' placeholder='add todo' v-model="tempTodo" />
+            <div class="buttons">
+                <button class="btn btn-secondary" @click="$emit('close')">Close</button>
+                <button class="btn btn-primary mb-2" type="submit"
+                    @click="$emit('add', tempHeading, tempTodo); resetTemp()">Submit</button>
             </div>
-            <button @click="$emit('close')">Close</button>
-            <button type="submit" @click="$emit('add', tempHeading, tempTodo); resetTemp()">Submit</button>
 
         </div>
     </div>
@@ -48,10 +55,33 @@ const resetTemp = () => {
 }
 
 #modal {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 1rem;
     width: 25rem;
-    height: fit-content;
+    min-height: 20rem;
     margin: auto auto;
     background-color: white;
     z-index: 101;
+}
+
+.heading {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+
+
+textarea {
+    width: 100%;
+    height: 10rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
 }
 </style>
