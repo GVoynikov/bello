@@ -1,7 +1,4 @@
 <script setup>
-const props = defineProps({
-    isBordered: Boolean
-})
 
 </script>
 
@@ -14,6 +11,8 @@ const props = defineProps({
 
 <style scoped>
 nav {
+    display: flex;
+    align-items: center;
     padding: 0;
     margin: 0;
     top: 0;
@@ -27,7 +26,9 @@ nav {
 }
 
 h1 {
+    margin-left: 2rem;
+    color: white;
     font-size: 2.5rem;
-    font-style: Pacifico;
+    font-family: 'Pacifico', cursive;
 }
 </style>

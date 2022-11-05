@@ -5,12 +5,12 @@ import HeaderTop from './components/HeaderTop.vue';
 import TodoSection from './components/TodoSection.vue';
 import ModalCard from './components/ModalCard.vue';
 
-let hasBorder = ref(true)
+
 </script>
 
 <template>
 
-  <HeaderTop :isBordered="hasBorder" />
+  <HeaderTop />
   <div id="sections">
     <TodoSection sectionTitle='Todo' />
     <TodoSection sectionTitle='In-Progress' />
@@ -26,9 +26,12 @@ let hasBorder = ref(true)
     url(./fonts/Pacifico-Regular.ttf) format("truetype");
 }
 
+/* @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
+
 #sections {
   margin-top: 2rem;
   display: flex;
+  flex-wrap: wrap;
 }
 </style>
 

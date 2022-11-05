@@ -24,7 +24,8 @@ const addTodo = (tempHeading, tempTodo) => {
 
 const props = defineProps({
 
-    sectionTitle: String
+    sectionTitle: String,
+    id: null
 });
 
 const showModal = () => {
@@ -32,6 +33,16 @@ const showModal = () => {
 }
 const closeModal = () => {
     isModalOpen.value = false;
+}
+
+const drop = (e) => {
+    const card_id = e.dataTransfer.getData('card_id');
+
+    const card = document.getElementById(card_id);
+
+    card.style.display = 'block';
+
+    e.target.appendChild(card);
 }
 
 </script>
@@ -45,17 +56,31 @@ const closeModal = () => {
         <template #task>Taskkkk</template>
     </ModalCard>
     <div id="container">
-        <h2>{{ sectionTitle }}</h2>
-        <div id="cards">
-            <TodoCard v-for='todo in todos' :heading='todo.heading' :todo='todo.todo' :id="todo.id" :key='todo.id' />
+        <div id="heading">
+            <h2>{{ sectionTitle }}</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class='add' @click="showModal">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
         </div>
-        <button @click="showModal">Add card</button>
+
+
+
+        <div :id="id" class="cards" @dragover.prevent @drop.prevent="drop">
+            <TodoCard v-for='todo in todos' :heading='todo.heading' :todo='todo.todo' :id="todo.id" :key='todo.id'
+                draggable="true" />
+        </div>
 
     </div>
 
 </template>
 
 <style scoped>
+h2 {
+    font-family: 'Pacifico', cursive;
+}
+
 main {
     width: 100%;
     display: flex;
@@ -79,9 +104,19 @@ button {
 
 }
 
-#cards {
+.cards {
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+#heading {
+    max-height: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add:hover {
+    opacity: 0.5;
 }
 </style>
